@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed;s calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    made by ahmed el sayed hadad 
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+.p{
+   color: rgb(245, 235, 235);
+}
+
+.calculator {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    width: 350px;
+}
+
+.screen {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #0f0;
+    text-align: right;
+    font-size: 2.5em;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    background-color: #444;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+.operator {
+    background-color: #d48806;
+}
+
+.operator:hover {
+    background-color: #e5a21b;
+}
+
+.equal {
+    background-color: #28a745;
+}
+
+.equal:hover {
+    background-color: #218838;
+}
+
+.clear {
+    background-color: #dc3545;
+}
+
+.clear:hover {
+    background-color: #c82333;
+}
+
+.btn:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+h1 {
+    margin: 0;
+}
+
+    </style>
+    <div class="calculator">
+        <div class="screen">
+            <h1 id="display">0</h1>
+        </div>
+        <div class="buttons">
+            <button class="btn" onclick="addToScreen('7')">7</button>
+            <button class="btn" onclick="addToScreen('8')">8</button>
+            <button class="btn" onclick="addToScreen('9')">9</button>
+            <button class="btn operator" onclick="addToScreen('/')">÷</button>
+
+            <button class="btn" onclick="addToScreen('4')">4</button>
+            <button class="btn" onclick="addToScreen('5')">5</button>
+            <button class="btn" onclick="addToScreen('6')">6</button>
+            <button class="btn operator" onclick="addToScreen('*')">×</button>
+
+            <button class="btn" onclick="addToScreen('1')">1</button>
+            <button class="btn" onclick="addToScreen('2')">2</button>
+            <button class="btn" onclick="addToScreen('3')">3</button>
+            <button class="btn operator" onclick="addToScreen('-')">-</button>
+
+            <button class="btn" onclick="addToScreen('0')">0</button>
+            <button class="btn" onclick="addToScreen('.')">.</button>
+            <button class="btn equal" onclick="calculate()">=</button>
+            <button class="btn operator" onclick="addToScreen('+')">+</button>
+
+            <button class="btn clear" onclick="clearScreen()">DEl</button>
+        </div>
+    </div>
+
+    <script>
+        let expression = '';
+
+        function addToScreen(value) {
+            expression += value;
+            document.getElementById('display').innerHTML = expression;
+        }
+
+        function calculate() {
+            try {
+                expression = eval(expression);  // حساب النتيجة
+                document.getElementById('display').innerHTML = expression;
+            } catch (error) {
+                document.getElementById('display').innerHTML = "خطأ";
+            }
+        }
+
+        function clearScreen() {
+            expression = '';
+            document.getElementById('display').innerHTML = '0';
+        }
+    </script>
+</body>
+</html>
